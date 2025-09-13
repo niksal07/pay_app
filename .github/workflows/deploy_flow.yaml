@@ -1,4 +1,4 @@
-name: Payment app deploy to EKS
+name: Payment app deploy to EKS clean
 
 on:
   push:
