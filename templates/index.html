@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bill and Payment Uploads</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    
+    <!-- Disable caching so browser can't show this page after logout -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+            <a class="navbar-brand" href="http://localhost:5000">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="Company Logo" width="40" height="30">
+                Eikhoigee
+            </a>
+        </div>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Bill and Payment Uploads</a>
+        </div>
+        <div>
+            <a href="{{ url_for('logout') }}" class="btn btn-danger" style="margin: 20px;">Logout</a>
+        </div>
+    </nav>
+
+    <div style="margin: 20px;">
+        <h4>Bill List</h4>
+        <p>Here you can view all the bills and their payment status.</p>
+        <p>Click on "Pay now" to upload a payment image for the respective bill.</p>
+    </div>
+
+    <table class="table table-light table-striped">
+        <thead>
+            <tr>
+                <th>S.no</th>
+                <th>Month</th>
+                <th>Invoice No</th>
+                <th>Amount</th>
+                <th>Due Date</th>
+                <th>Payment Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bill in bills %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ bill.month }}</td>
+                <td>{{ bill.invoice_no }}</td>
+                <td>{{ bill.amount }}</td>
+                <td>{{ bill.due_date }}</td>
+                <td>{{ bill.payment_status }}</td>
+                <td>
+                    {% if bill.payment_status != "Submitted for review" %}
+                        <form action="{{ url_for('upload', bill_id=bill.id) }}" method="get" style="margin: 0;">
+                            <button type="submit" class="btn btn-success">Pay now</button>
+                        </form>
+                    {% else %}
+                        <span>Uploaded</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        // Prevent using Back button after logout
+        window.history.pushState(null, "", window.location.href);
+        window.onpopstate = function() {
+            window.history.pushState(null, "", window.location.href);
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background-color: #a6c9ec;
+}
+
+.header {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.bills-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+.bills-table th,
+.bills-table td {
+    border: 1px solid #515151;
+    padding: 10px;
+    text-align: center;
+}
+
+.bills-table th {
+    background-color: #525050;
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.login-form {
+    font-family: 'Courier New', Courier, monospace;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+}

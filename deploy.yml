@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-pay-app
+  labels:
+    app: my-pay-app
+spec:
+  replicas: 3
+  selector:   
+    matchLabels:
+      app: my-pay-app
+  template: 
+    metadata:
+      labels:
+        app: my-pay-app
+    spec:
+      containers:
+      - name: my-pay-app
+        image: 381492217844.dkr.ecr.us-east-2.amazonaws.com/pay-app:1.0
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 5000
