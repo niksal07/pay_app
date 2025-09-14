@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_eks_cluster" "this" {
-  name     = "my-pay-eks-cluster"
+  name     = "my-pay2-eks-cluster"
   role_arn = "arn:aws:iam::381492217844:role/eks-cluster-role"  # use the role you created
 
   vpc_config {
