@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: my-pay-app
-        image: 381492217844.dkr.ecr.us-east-2.amazonaws.com/pay-app:1.0
+        image: 381492217844.dkr.ecr.us-east-2.amazonaws.com/pay-app:1
         imagePullPolicy: Always
         ports:
           - containerPort: 5000
